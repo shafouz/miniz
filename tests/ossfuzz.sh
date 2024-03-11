@@ -26,8 +26,8 @@ EOF
 
 mkdir build
 cd build
-cmake .. -DAMALGAMATE_SOURCES=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_FUZZERS=ON -DBUILD_TESTS=OFF
-make -j$(nproc)
+bear -- cmake .. -DAMALGAMATE_SOURCES=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_FUZZERS=ON -DBUILD_TESTS=OFF
+bear -- make -j$(nproc)
 cd ..
 
 zip $OUT/seed_corpus.zip *.*
@@ -44,5 +44,8 @@ done
 # Add .zip input file for the zip fuzzer
 rm -f $OUT/zip_fuzzer_seed_corpus.zip
 zip $OUT/zip_fuzzer_seed_corpus.zip $OUT/seed_corpus.zip
-
 cp tests/zip.dict $OUT/zip_fuzzer.dict
+
+rm -f $OUT/move_fuzzer_seed_corpus.zip
+zip $OUT/move_fuzzer_seed_corpus.zip $OUT/seed_corpus.zip
+cp tests/zip.dict $OUT/move_fuzzer.dict

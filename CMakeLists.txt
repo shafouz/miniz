@@ -271,6 +271,7 @@ if(BUILD_FUZZERS)
   set(SMALL_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/small_fuzzer.c")
   set(LARGE_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/large_fuzzer.c")
   set(ZIP_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/zip_fuzzer.c")
+  set(MOVE_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/move_fuzzer.c")
 
   add_executable(checksum_fuzzer ${CHECKSUM_FUZZER_SRC_LIST})
   target_link_libraries(checksum_fuzzer miniz)
@@ -295,6 +296,9 @@ if(BUILD_FUZZERS)
 
   add_executable(zip_fuzzer ${ZIP_FUZZER_SRC_LIST})
   target_link_libraries(zip_fuzzer miniz)
+
+  add_executable(move_fuzzer ${MOVE_FUZZER_SRC_LIST})
+  target_link_libraries(move_fuzzer miniz)
 endif()
 
 if(BUILD_TESTS)
