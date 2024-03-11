@@ -24,17 +24,13 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     return 0;
   }
 
-  fprintf(stderr, "DEBUGPRINT[1]: move_fuzzer.c:27: 1=%d\n", 1);
   if (!mz_zip_writer_init_heap(&zip_writer, 0, size)) {
-    fprintf(stderr, "DEBUGPRINT[1]: move_fuzzer.c:29: 1=%d\n", 1);
     return 0;
   }
-  fprintf(stderr, "DEBUGPRINT[2]: move_fuzzer.c:32: 1=%d\n", 1);
 
   mz_uint i, files;
 
   files = mz_zip_reader_get_num_files(&zip);
-  fprintf(stderr, "DEBUGPRINT[6]: zip_fuzzer.c:28: files=%d\n", files);
 
   for (i = 0; i < files; i++) {
     mz_zip_clear_last_error(&zip);
@@ -69,6 +65,6 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 
 cleanup:
   mz_zip_reader_end(&zip);
-
+  mz_zip_writer_end(&zip_writer);
   return ret;
 }

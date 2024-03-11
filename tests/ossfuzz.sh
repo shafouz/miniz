@@ -24,7 +24,7 @@ cat << "EOF" > miniz_export.h
 #endif
 EOF
 
-mkdir build
+mkdir -p build
 cd build
 bear -- cmake .. -DAMALGAMATE_SOURCES=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_FUZZERS=ON -DBUILD_TESTS=OFF
 bear -- make -j$(nproc)
