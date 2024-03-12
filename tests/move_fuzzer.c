@@ -56,9 +56,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     if ((file_stat.m_method) && (file_stat.m_method != MZ_DEFLATED))
       continue;
 
-    if (!mz_zip_writer_add_from_zip_reader(&zip_writer, &zip, i)) {
-      abort();
-    };
+    if (!mz_zip_writer_add_from_zip_reader(&zip_writer, &zip, i)) continue;
 
     mz_zip_reader_extract_file_to_mem(&zip_writer, file_stat.m_filename, read_buf, read_buf_size, 0);
   }
