@@ -7,4 +7,5 @@ compile_commands.json
 miniz_export.h
 /cov
 /crashes
-.gdb-history
+.gdb_history
+FuzzedDataProvider.h

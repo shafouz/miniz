@@ -2457,7 +2457,11 @@ mz_bool mz_zip_validate_file(mz_zip_archive *pZip, mz_uint file_index, mz_uint f
 
         file_crc32 = MZ_READ_LE32(pSrc);
 
+        // #ifdef FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION
+        // if (pState->m_mem_size >= 0xFFFFFFFF && ((pState->m_zip64) || (found_zip64_ext_data_in_ldir)))
+        // #else
         if ((pState->m_zip64) || (found_zip64_ext_data_in_ldir))
+        // #endif
         {
             comp_size = MZ_READ_LE64(pSrc + sizeof(mz_uint32));
             uncomp_size = MZ_READ_LE64(pSrc + sizeof(mz_uint32) + sizeof(mz_uint64));

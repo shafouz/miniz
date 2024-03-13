@@ -261,6 +261,8 @@ if(BUILD_EXAMPLES)
 endif(BUILD_EXAMPLES)
 
 if(BUILD_FUZZERS)
+  add_compile_definitions(FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION)
+
   set(FUZZ_MAIN_SRC "${CMAKE_CURRENT_SOURCE_DIR}/tests/fuzz_main.c")
 
   set(CHECKSUM_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/checksum_fuzzer.c")
@@ -272,6 +274,7 @@ if(BUILD_FUZZERS)
   set(LARGE_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/large_fuzzer.c")
   set(ZIP_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/zip_fuzzer.c")
   set(MOVE_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/move_fuzzer.c")
+  set(ZIP64_FUZZER_SRC_LIST "${FUZZ_MAIN_SRC}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/zip64_fuzzer.c")
 
   add_executable(checksum_fuzzer ${CHECKSUM_FUZZER_SRC_LIST})
   target_link_libraries(checksum_fuzzer miniz)
@@ -299,6 +302,9 @@ if(BUILD_FUZZERS)
 
   add_executable(move_fuzzer ${MOVE_FUZZER_SRC_LIST})
   target_link_libraries(move_fuzzer miniz)
+
+  add_executable(zip64_fuzzer ${ZIP64_FUZZER_SRC_LIST})
+  target_link_libraries(zip64_fuzzer miniz)
 endif()
 
 if(BUILD_TESTS)
