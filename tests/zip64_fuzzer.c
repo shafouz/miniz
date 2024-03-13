@@ -55,6 +55,6 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 
 cleanup:
     mz_zip_reader_end(&zip_reader);
-
+    mz_zip_writer_end(&zip_writer);
     return ret;
 }
