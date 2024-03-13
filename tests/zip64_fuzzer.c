@@ -1,5 +1,4 @@
 #include "miniz.h"
-#include "miniz_zip.h"
 #include <inttypes.h>
 #include <stdint.h>
 
