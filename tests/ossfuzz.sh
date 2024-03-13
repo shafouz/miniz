@@ -46,10 +46,6 @@ rm -f $OUT/zip_fuzzer_seed_corpus.zip
 zip $OUT/zip_fuzzer_seed_corpus.zip $OUT/seed_corpus.zip
 cp tests/zip.dict $OUT/zip_fuzzer.dict
 
-rm -f $OUT/move_fuzzer_seed_corpus.zip
-zip $OUT/move_fuzzer_seed_corpus.zip $OUT/seed_corpus.zip
-cp tests/zip.dict $OUT/move_fuzzer.dict
-
 rm -f $OUT/zip64_fuzzer_seed_corpus.zip
 zip $OUT/zip64_fuzzer_seed_corpus.zip $OUT/seed_corpus.zip
 cp tests/zip.dict $OUT/zip64_fuzzer.dict
